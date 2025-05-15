@@ -6,10 +6,16 @@ alumnos
 Crear Alumno
 <form method="post" action={{route('alumnos.store')}}>
     @csrf
-    <input type="text" name="nombre_ape" placeholder="nombre">
-    <input type="number" name="edad" placeholder="edad">
-    <input type="text" name=telefono placeholder="telefono">
-    <input type="text" name="direccion" placeholder="direccion">
+    <input type="text" name="nombre_ape" placeholder="nombre" value="{{old('nombre_ape')}}">
+    <input type="number" name="edad" placeholder="edad" value="{{old('edad')}}">
+    <input type="text" name=telefono placeholder="telefono" value="{{old('telefono')}}">
+    <input type="text" name="direccion" placeholder="direccion" value="{{old('direccion')}}">
     <input type="submit">
+    @error('nombre_ape')
+    <p>{{$message}}</p>
+    @enderror
+    @error('edad')
+    <p>{{$message}}</p>
+    @enderror
 </form>
 @endsection
