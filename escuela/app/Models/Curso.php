@@ -17,6 +17,6 @@ class Curso extends Model
     }
 
     public function profesors(){
-        return $this->belongsTo(Profesor::class,'profesor_id');
+        return $this->belongsTo(Profesor::class,foreignKey: 'profesor_id');
     }
 }

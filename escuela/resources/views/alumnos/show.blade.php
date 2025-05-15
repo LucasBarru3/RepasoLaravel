@@ -1,0 +1,12 @@
+@extends('layouts.plantilla')
+@section('title')
+Detalle
+@endsection
+@section('content')
+<ul>
+    <h2>{{$alumno->nombre_ape}}</h2>
+    <h2>{{$alumno->edad}}</h2>
+    <h2>{{$alumno->telefono}}</h2>
+    <h2>{{$alumno->direccion}}</h2>
+</ul>
+@endsection
