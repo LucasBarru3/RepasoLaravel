@@ -26,4 +26,5 @@ alumnos
     </tr>
     @endforeach
     {{$alumnos->links()}}
+    <x-footer :chichilla="'Texto dinámico en el footer'" />
 @endsection
