@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Libro;
 use App\Models\Autor;
+use App\Models\Opinion;
 use Illuminate\Http\Request;
 class LibroController extends Controller
 {
@@ -51,7 +52,8 @@ class LibroController extends Controller
     public function show($libro)
     {
         $libro = Libro::find($libro);
-        return view('libros.show', compact('libro'));
+        $opiniones = Opinion::where('libro_id', $libro->id)->get();
+        return view('libros.show', compact('libro', 'opiniones'));
     }
 
     /**
@@ -60,9 +62,9 @@ class LibroController extends Controller
     public function edit($libro)
     {
         $libro = Libro::find($libro);
-        $autorOriginal = Autor::find($libro->id);
+        $autorOriginal = Autor::find($libro->autor_id);
         $autors = Autor::all();
-        return view('libros.edit', data: compact('libro','autors', 'autorsOriginal'));
+        return view('libros.edit', compact('libro','autors', 'autorOriginal'));
     }
 
     /**
@@ -70,7 +72,12 @@ class LibroController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $libro = Libro::find($id);
+        $libro->titulo= $request->titulo;
+        $libro->descripcion= $request->descripcion;
+        $libro->ano_publicacion= $request->ano_publicacion;
+        $libro->save();
+        return redirect()->route('libros.show', $libro->id);
     }
 
     /**

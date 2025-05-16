@@ -18,7 +18,7 @@ class LibroFactory extends Factory
     {
         return [
             'titulo' => $this->faker->word(),
-            'descripcion'=> $this->faker->paragraph(),
+            'descripcion'=> $this->faker->text(200),
             'ano_publicacion'=>$this->faker->numberBetween(2000,2025),
             'autor_id'=>$this->faker->numberBetween(1,10)
         ];

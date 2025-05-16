@@ -17,7 +17,7 @@ Libros
             <td>{{$libro->descripcion}}</td>
             <td>{{$libro->ano_publicacion}}</td>
             <td><a href="{{route('libros.confirmar', $libro->id)}}">Eliminar</a></td>
-            <td><a href="{{route('libros.edit', $libro}}">Editar</a></td>
+            <td><a href="{{route('libros.edit', $libro)}}">Editar</a></td>
         </tr>
         @endforeach
         {{$libros->links()}}

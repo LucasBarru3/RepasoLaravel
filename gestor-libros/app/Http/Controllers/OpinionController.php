@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Opinion;
 use Illuminate\Http\Request;
 
 class OpinionController extends Controller
@@ -27,7 +28,19 @@ class OpinionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nombre_usuario' => 'required|min:5',
+            'comentario'=> 'required|min:10',
+            'valoracion'=> 'required',
+            'libro_id'=> 'required'
+        ]);
+        $opinion = new Opinion();
+        $opinion->nombre_usuario= $request->nombre_usuario;
+        $opinion->comentario= $request->comentario;
+        $opinion->valoracion= $request->valoracion;
+        $opinion->libro_id= $request->libro_id;
+        $opinion->save();
+        return redirect()->route('libros.show', $request->libro_id);
     }
 
     /**
