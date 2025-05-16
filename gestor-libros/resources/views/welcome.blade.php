@@ -1,0 +1,1 @@
+<a href="{{route('libros.index')}}">Ir a alumnos</a>
