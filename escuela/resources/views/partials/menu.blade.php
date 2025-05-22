@@ -20,7 +20,7 @@
 
             <ul id="submenu">
 
-                <li><a href="">Cursos</a></li>
+                <li><a href="{{route('cursos.index')}}">Cursos</a></li>
 
                 <li><a href="">Nuevo curso</a></li>
 

@@ -32,12 +32,17 @@ class AlumnoController extends Controller
         $request->validate([
             'nombre_ape' => 'required',
             'edad'=> 'required',
+            'imagen' => 'nullable|image|max:2048',
         ]);
         $alumno = new Alumno();
         $alumno->nombre_ape= $request->nombre_ape;
         $alumno->edad= $request->edad;
         $alumno->telefono= $request->telefono;
         $alumno->direccion= $request->direccion;
+        if($request->hasFile('imagen')){
+            $path = $request->file('imagen')->store('imagenes','public');
+            $alumno->imagen=$path;
+        }
         $alumno->save();
         return redirect()->route('alumnos.show', $alumno->id);
     }

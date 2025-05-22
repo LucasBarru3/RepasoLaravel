@@ -21,6 +21,11 @@ alumnos
         <td>{{$alumno->edad}}</td>
         <td>{{$alumno->telefono}}</td>
         <td>{{$alumno->direccion}}</td>
+        <td>
+            @if ($alumno->imagen)
+                <img width="20%" src="{{asset('storage/'.$alumno->imagen)}}" alt="">
+            @endif
+        </td>
         <td><a href="{{route('alumnos.edit',$alumno->id)}}">Editar</a></td>
         <td><a href="{{route('alumnos.confirmar', $alumno->id)}}">Eliminar</a></td>
     </tr>
